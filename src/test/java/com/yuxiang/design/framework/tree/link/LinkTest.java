@@ -1,12 +1,18 @@
 package com.yuxiang.design.framework.tree.link;
 
 
+import com.yuxiang.design.framework.link.chain.BusinessLinkedList;
 import com.yuxiang.design.framework.link.chain.LinkedList;
+import com.yuxiang.design.framework.link.example.TradeSettlementRuleFilterFactory;
+import com.yuxiang.design.framework.link.example.entity.TradeSettlementRuleCommandEntity;
+import com.yuxiang.design.framework.link.example.entity.TradeSettlementRuleFilterBackEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.annotation.Resource;
 
 @SpringBootTest
 public class LinkTest {
@@ -36,5 +42,21 @@ public class LinkTest {
         linkedList.addLast(new Person("员工3",25));
         linkedList.addLast(new Person("员工4",26));
         linkedList.printLinkList();
+    }
+
+
+    @Resource
+    private BusinessLinkedList<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> tradeSettlementRuleFilter;
+
+
+
+    @Test
+    public void tradeRuleFilterTest(){
+        TradeSettlementRuleFilterBackEntity tradeSettlementRuleFilterBackEntity = tradeSettlementRuleFilter.apply(
+                TradeSettlementRuleCommandEntity.builder()
+                        .source("国家地理")
+                        .outTradeNo("12345678")
+                        .build(),
+                new TradeSettlementRuleFilterFactory.DynamicContext());
     }
 }
