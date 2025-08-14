@@ -3,9 +3,12 @@ package com.yuxiang.design.framework.tree.link;
 
 import com.yuxiang.design.framework.link.chain.BusinessLinkedList;
 import com.yuxiang.design.framework.link.chain.LinkedList;
+import com.yuxiang.design.framework.link.example.EmployeeInformationRuleFilterFactory;
 import com.yuxiang.design.framework.link.example.TradeSettlementRuleFilterFactory;
 import com.yuxiang.design.framework.link.example.entity.TradeSettlementRuleCommandEntity;
 import com.yuxiang.design.framework.link.example.entity.TradeSettlementRuleFilterBackEntity;
+import com.yuxiang.design.framework.link.example.entity.UserInformationEntity;
+import com.yuxiang.design.framework.link.example.entity.UserInformationRuleFilterBackEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -60,5 +63,22 @@ public class LinkTest {
                         .outTradeTime(new Date())
                         .build(),
                 new TradeSettlementRuleFilterFactory.DynamicContext());
+    }
+
+
+    @Resource
+    private BusinessLinkedList<UserInformationEntity, EmployeeInformationRuleFilterFactory.DynamicContext, UserInformationRuleFilterBackEntity> employeeInformationRuleFilter;
+
+    @Test
+    public  void employeeInformationFilterTest(){
+
+        UserInformationRuleFilterBackEntity ret = employeeInformationRuleFilter.apply(
+                UserInformationEntity.builder()
+                .name("wangyuxiang")
+                .phone("1351111111")
+                .email("1244838148@qq.com")
+                .age(25).address("陕西西安")
+                .job("学生").build(),
+                new EmployeeInformationRuleFilterFactory.DynamicContext());
     }
 }
