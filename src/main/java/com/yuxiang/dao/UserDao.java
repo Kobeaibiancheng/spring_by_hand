@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDao {
+    private String id;
     private String name;
     private int age;
     private String address;

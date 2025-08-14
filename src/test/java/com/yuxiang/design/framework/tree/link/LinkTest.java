@@ -74,6 +74,7 @@ public class LinkTest {
 
         UserInformationRuleFilterBackEntity ret = employeeInformationRuleFilter.apply(
                 UserInformationEntity.builder()
+                        .id("1")
                 .name("wangyuxiang")
                 .phone("1351111111")
                 .email("1244838148@qq.com")
