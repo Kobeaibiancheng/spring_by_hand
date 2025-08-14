@@ -13,11 +13,12 @@ public class SCRuleFilter implements ILogicHandler<TradeSettlementRuleCommandEnt
 
     @Override
     public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter, TradeSettlementRuleFilterFactory.DynamicContext dynamicContext) {
+        String s = "国家地理";
+
         String source = requestParameter.getSource();
-        boolean isTrue = source.equals("国家地理");
+        boolean isTrue = source.equals(s);
         log.info("sc校验，来源和渠道,{},{}",source,isTrue);
 
-        log.info("校验成功");
         return next(requestParameter, dynamicContext);
     }
 }

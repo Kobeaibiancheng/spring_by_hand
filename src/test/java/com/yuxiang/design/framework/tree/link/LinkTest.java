@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 @SpringBootTest
 public class LinkTest {
@@ -56,6 +57,7 @@ public class LinkTest {
                 TradeSettlementRuleCommandEntity.builder()
                         .source("国家地理")
                         .outTradeNo("12345678")
+                        .outTradeTime(new Date())
                         .build(),
                 new TradeSettlementRuleFilterFactory.DynamicContext());
     }

@@ -7,19 +7,15 @@ import com.yuxiang.design.framework.link.handler.ILogicHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 
 @Slf4j
 @Service
-public class SettableRuleFilter implements ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
-
+public class NameRuleFilter implements ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
     @Override
     public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter, TradeSettlementRuleFilterFactory.DynamicContext dynamicContext) {
 
-        Date outTradeTime = requestParameter.getOutTradeTime();
+        String name = "国家地理";
 
-        log.info("交易时间校验,{}",outTradeTime);
-
-        return next(requestParameter, dynamicContext);
+        return null;
     }
 }

@@ -40,7 +40,6 @@ public class TradeSettlementRuleFilterFactory {
     }
 
 
-
     @Data
     @Builder
     @AllArgsConstructor
@@ -51,4 +50,7 @@ public class TradeSettlementRuleFilterFactory {
         // 拼团组队实体对象
         private GroupBuyTeamEntity groupBuyTeamEntity;
     }
+
+
+
 }
