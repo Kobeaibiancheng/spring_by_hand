@@ -69,17 +69,25 @@ public class LinkTest {
     @Resource
     private BusinessLinkedList<UserInformationEntity, EmployeeInformationRuleFilterFactory.DynamicContext, UserInformationRuleFilterBackEntity> employeeInformationRuleFilter;
 
+
+    @Resource
+    private UserInformationEntity userInformationEntity;
+
     @Test
     public  void employeeInformationFilterTest(){
+
+        System.out.println(userInformationEntity);
+
+
 
         UserInformationRuleFilterBackEntity ret = employeeInformationRuleFilter.apply(
                 UserInformationEntity.builder()
                         .id("1")
-                .name("wangyuxiang")
-                .phone("1351111111")
-                .email("1244838148@qq.com")
-                .age(25).address("陕西西安")
-                .job("学生").build(),
-                new EmployeeInformationRuleFilterFactory.DynamicContext());
+                        .name("wangyuxiang")
+                        .phone("1351111111")
+                        .email("1244838148@qq.com")
+                        .age(25).address("陕西西安")
+                        .job("学生").build(),
+                        new EmployeeInformationRuleFilterFactory.DynamicContext());
     }
 }
