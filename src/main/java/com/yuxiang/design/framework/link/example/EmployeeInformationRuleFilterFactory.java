@@ -12,12 +12,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class EmployeeInformationRuleFilterFactory {
+
     @Bean("employeeInformationRuleFilter")
     public BusinessLinkedList<UserInformationEntity,
             EmployeeInformationRuleFilterFactory.DynamicContext, UserInformationRuleFilterBackEntity> employeeInformationRuleFilter(
@@ -32,6 +34,13 @@ public class EmployeeInformationRuleFilterFactory {
         // 链对象
         return linkArmory.getLogicLink();
     }
+
+    @Bean("userInformationEntity")
+    public UserInformationEntity userInformationEntity() {
+        UserInformationEntity userInformationEntity = new UserInformationEntity("1","汪玉祥", 25, "陕西西安", "13572151005", "1244838148@qq.com", "学生");
+        return userInformationEntity;
+    }
+
 
 
 
